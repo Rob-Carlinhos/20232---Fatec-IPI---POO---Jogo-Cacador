@@ -2,9 +2,9 @@ public class Personagem{
     
     //atributos ou propriedades
     String nome;
-    int energia;
-    int fome;
-    int sono;
+    int energia = 10;
+    int fome = 0;
+    int sono = 0;
     //comportamentos (métodos)
     void cacar() {
         if(energia >= 2) {
@@ -15,7 +15,7 @@ public class Personagem{
             System.out.println(nome + " sem energia para caçar...");
         }
         fome = Math.min(fome + 1, 10);
-        sono = Math.min(sono + 1, 10);)
+        sono = Math.min(sono + 1, 10);
     }
 
     void comer() {
