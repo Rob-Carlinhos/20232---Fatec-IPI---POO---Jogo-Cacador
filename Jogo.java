@@ -1,14 +1,21 @@
 import java.util.Random;
+
+import javax.lang.model.util.ElementScanner14;
 public class Jogo {
     public static void main(String[] args) throws Exception {
         var gerador = new Random();
         var personagem = new Personagem();
         personagem.nome = " John";
         var soneca = new Personagem();
+        
         //nasce com muito sono e sem energia. fome mais ou menos
         //ele tem probabilidade 80% de dormir
         //10% de caçar
         //10% de comer
+        soneca.nome = "Soneca";
+        soneca.sono = 10;
+        soneca.energia = 0;
+        soneca.fome = 4;
         while(true) {
             int oQuefazer = gerador.nextInt(3); //[0..3[
             switch(oQuefazer) {
@@ -29,6 +36,20 @@ public class Jogo {
                 personagem.fome,
                 personagem.sono
             );
+            System.out.println("--------------------");
+            var oQueOSonecaVaiFazer = gerador.nextDouble();
+            if (oQueOSonecaVaiFazer <= 0.8) 
+                soneca.dormir();
+            else if (oQueOSonecaVaiFazer <= 0.9)
+                soneca.comer();
+            else 
+                soneca.cacar();
+                System.out.printf(
+                    "e: %d, f: %d, s: %d\n",
+                    soneca.energia,
+                    soneca.fome,
+                    soneca.sono
+                );
             System.out.println("********************");
             Thread.sleep(8000);
         }
